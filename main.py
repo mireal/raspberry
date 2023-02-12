@@ -7,7 +7,7 @@ import csv
 SENSOR = Adafruit_DHT.DHT22
 PIN = 4
 FIELDS = ['Date', 'Time', 'Temperature', 'Humidity']
-DIRECTORY = './raspberry/results/'
+DIRECTORY = './results/'
 
 while True:
     now = datetime.datetime.now()
