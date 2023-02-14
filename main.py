@@ -11,7 +11,7 @@ lcd = lc(0x3f, 1, numlines=LC_ROWS)
 SENSOR = Adafruit_DHT.DHT22
 PIN = 4
 FIELDS = ['Date', 'Time', 'Temperature', 'Humidity']
-DIRECTORY = './raspberry/results/'
+DIRECTORY = './results/'
 
 def show_temp(temp,humid,light = 0):
     if light == 1:
