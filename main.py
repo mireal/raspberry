@@ -1,7 +1,7 @@
 from time import sleep
 from datetime import datetime
 from csvwriter import csvwriter
-from lcd import show_temp
+from lcd import lcd_print, light_mode
 from dht_sensor import get_data
 
 DIRECTORY = './results/'
@@ -19,13 +19,14 @@ while True:
 
     if humidity and temperature:
 
-        if 8 < int(now.strftime("%H")) < 18:
-            show_temp(temperature, humidity)
+        if 8 < int(now.strftime("%H")) < 18:  # Turn display light off from 6pm to 8am
+            lcd_print(f'Temp:  {temperature}', f'Humid: {humidity}%')
         else:
-            show_temp(temperature, humidity, False)
+            light_mode(False)
+            lcd_print(f'Temp:  {temperature}', f'Humid: {humidity}%')
 
         row = [Date, Time, temperature, humidity]
-        filename = f'{DIRECTORY}{Date}.csv'
+        filename = f'{DIRECTORY}{Date}'
 
         if Minute != last_minute:
             csvwriter(HEADERS, filename, row)
