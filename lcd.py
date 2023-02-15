@@ -11,6 +11,5 @@ def show_temp(temp, humid, light=True):
         LCD.backlight()
     else:
         LCD.noBacklight()
-    LCD.clear()
     LCD.printline(0, f'Temp:  {temp}C')
     LCD.printline(1, f'Humid: {humid}%')
