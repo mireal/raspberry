@@ -2,12 +2,14 @@ from time import sleep
 from datetime import datetime
 from csvwriter import csvwriter
 from lcd import lcd_print, light_mode
-from dht_sensor import get_data
-
+# from dht_sensor import get_data
+from mqtt_client import MqttGetMessage
 DIRECTORY = './results/'
 HEADERS = ['Date', 'Time', 'Temperature', 'Humidity']
 
 last_minute = int(datetime.now().strftime('%M'))
+
+get_mqtt = MqttGetMessage()
 
 while True:
     now = datetime.now()
@@ -15,7 +17,8 @@ while True:
     Time = now.strftime("%H:%M:%S")
     Minute = int(now.strftime("%M"))
 
-    humidity, temperature = get_data()
+    # humidity, temperature = get_data()
+    temperature, humidity = get_mqtt.get_message()
 
     if humidity and temperature:
 
