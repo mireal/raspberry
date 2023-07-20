@@ -7,5 +7,8 @@ PIN = 4
 def get_data():
     """returns humidity and temperature from DHT sensor"""
     humidity, temperature = Dht.read_retry(SENSOR, PIN)
-    humidity, temperature = round(humidity, ndigits=2), round(temperature, ndigits=2)
-    return humidity, temperature
+    humidity, temperature = round(humidity, ndigits=1), round(temperature, ndigits=1)
+    return temperature, humidity
+
+if __name__ == '__main__':
+    print(get_data())

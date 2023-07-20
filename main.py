@@ -3,13 +3,13 @@ from datetime import datetime
 from csvwriter import csvwriter
 from lcd import lcd_print, light_mode
 # from dht_sensor import get_data
-from mqtt_client import MqttGetMessage
+from mqtt_client import MqttClient
 DIRECTORY = './results/'
 HEADERS = ['Date', 'Time', 'Temperature', 'Humidity']
 
 last_minute = int(datetime.now().strftime('%M'))
 
-get_mqtt = MqttGetMessage()
+get_mqtt = MqttClient()
 
 while True:
     now = datetime.now()
